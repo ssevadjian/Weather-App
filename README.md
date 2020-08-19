@@ -13,3 +13,11 @@ THEN I am presented with the last searched city forecast at the bottom of the pa
 ## Screenshot
 
 ![Screenshot](./weatherDashboardScreenshot.png)
+
+## Live Page
+
+https://ssevadjian.github.io/Weather-App/
+
+## GitHub Repository
+
+https://github.com/ssevadjian/Weather-App
