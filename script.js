@@ -4,6 +4,7 @@ $(document).ready(function() {
     const $icon = $(".icon");
     const $temperature = $(".temperature");
     const $humidity = $(".humidity");
+    const $windSpeed = $(".windSpeed");
     const $date1 = $(".date1");
     const $icon1 = $(".icon1");
     const $temperature1 = $(".temperature1");
@@ -24,9 +25,13 @@ $(document).ready(function() {
     const $icon5 = $(".icon5");
     const $temperature5 = $(".temperature5");
     const $humidity5 = $(".humidity5");
+    const $searchHistory = $(".searchHistory");
+    let cityNames = JSON.parse(localStorage.getItem("cityName")) || [];
+    $searchHistory.text("Search History: " + cityNames);
 
     $("#searchButton").click(function() {
         let cityName = $("#city-name").val();
+        localStorage.setItem("cityName", JSON.stringify(cityName));
         if (cityName != ''){
             $.ajax({
                 url: "http://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid=aba0dc3fe422be621a8162117dd5640b", 
@@ -35,8 +40,10 @@ $(document).ready(function() {
                 console.log(response);
                 $currentCity.text(response.city.name);
                 $date.text(response.list[0].dt_txt);
+                $icon.val(response.list[0].weather[0].main);
                 $temperature.text("Temp: " + response.list[0].main.temp + " F");
                 $humidity.text("Humidity: " + response.list[0].main.humidity + "%");
+                $windSpeed.text("Wind Speed: " + response.list[0].wind.speed + " MPH");
                 $date1.text(response.list[8].dt_txt);
                 $temperature1.text("Temp: " + response.list[8].main.temp + " F");
                 $humidity1.text("Humidity: " + response.list[8].main.humidity + "%");
