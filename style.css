@@ -1,0 +1,6 @@
+.h1Style {
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-content: center;
+}

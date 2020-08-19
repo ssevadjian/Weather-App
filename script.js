@@ -1,33 +1,56 @@
-$(document).ready(functio() {// This is our API key. Add your own API key between the ""
-var APIKey = "166a433c57516f51dfab1f7edaed8413";
+$(document).ready(function() {
+    const $currentCity = $(".currentCity");
+    const $date = $(".date");
+    const $icon = $(".icon");
+    const $temperature = $(".temperature");
+    const $humidity = $(".humidity");
+    const $date1 = $(".date1");
+    const $icon1 = $(".icon1");
+    const $temperature1 = $(".temperature1");
+    const $humidity1 = $(".humidity1");
+    const $date2 = $(".date2");
+    const $icon2 = $(".icon2");
+    const $temperature2 = $(".temperature2");
+    const $humidity2 = $(".humidity2");
+    const $date3 = $(".date3");
+    const $icon3 = $(".icon3");
+    const $temperature3 = $(".temperature3");
+    const $humidity3 = $(".humidity3");
+    const $date4 = $(".date4");
+    const $icon4 = $(".icon4");
+    const $temperature4 = $(".temperature4");
+    const $humidity4 = $(".humidity4");
 
-// Here we are building the URL we need to query the database
-var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=Bujumbura,Burundi&appid=" + APIKey;
-
-// We then created an AJAX call
-$.ajax({
-  url: queryURL,
-  method: "GET"
-}).then(function(response) {
-
-  // Create CODE HERE to Log the queryURL
-  console.log(queryURL);
-  // Create CODE HERE to log the resulting object
-  console.log(response);
-  // Create CODE HERE to calculate the temperature (converted from Kelvin)
-  const K = response.main.temp;
-  console.log(K);
-  //const K = temp.temp;
-  const F = (K - 273.15) * 1.80 + 32;
-  console.log(F);
-  // Create CODE HERE to transfer content to HTML
-  $('.city').text("City: " + response.name);
-  $('.wind').text("Wind: " + response.wind.deg);
-  $('.humidity').text("Humidity: " + response.main.humidity);
-  $('.temp').text("Temperature (F): " + F);
-  
-  // Hint: To convert from Kelvin to Fahrenheit: F = (K - 273.15) * 1.80 + 32
-  // Create CODE HERE to dump the temperature content into HTML
-
-})
+    $("#searchButton").click(function() {
+        let cityName = $("#city-name").val();
+        if (cityName != ''){
+            $.ajax({
+                url: "http://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid=aba0dc3fe422be621a8162117dd5640b", 
+                method: "GET",
+            }).then(function(response) {
+                console.log(response);
+                $currentCity.text(response.city.name);
+                $date.text(response.list[0].dt_txt);
+                $temperature.text(response.list[0].main.temp);
+                $humidity.text(response.list[0].main.humidity);
+                $date1.text(response.list[8].dt_txt);
+                $temperature1.text(response.list[8].main.temp);
+                $humidity1.text(response.list[8].main.humidity);
+                $date2.text(response.list[16].dt_txt);
+                $temperature2.text(response.list[16].main.temp);
+                $humidity2.text(response.list[16].main.humidity);
+                $date3.text(response.list[24].dt_txt);
+                $temperature3.text(response.list[24].main.temp);
+                $humidity3.text(response.list[24].main.humidity);
+                $date4.text(response.list[32].dt_txt);
+                $temperature4.text(response.list[32].main.temp);
+                $humidity4.text(response.list[32].main.humidity);
+                $date5.text(response.list[40].dt_txt);
+                $temperature5.text(response.list[40].main.temp);
+                $humidity5.text(response.list[40].main.humidity);
+            });
+        } else {
+            $("#error").html("Field cannot be empty");
+        }
+    });
 });
