@@ -20,6 +20,10 @@ $(document).ready(function() {
     const $icon4 = $(".icon4");
     const $temperature4 = $(".temperature4");
     const $humidity4 = $(".humidity4");
+    const $date5 = $(".date5");
+    const $icon5 = $(".icon5");
+    const $temperature5 = $(".temperature5");
+    const $humidity5 = $(".humidity5");
 
     $("#searchButton").click(function() {
         let cityName = $("#city-name").val();
@@ -31,23 +35,23 @@ $(document).ready(function() {
                 console.log(response);
                 $currentCity.text(response.city.name);
                 $date.text(response.list[0].dt_txt);
-                $temperature.text(response.list[0].main.temp);
-                $humidity.text(response.list[0].main.humidity);
+                $temperature.text("Temp: " + response.list[0].main.temp + "F");
+                $humidity.text("Humidity: " + response.list[0].main.humidity + "%");
                 $date1.text(response.list[8].dt_txt);
-                $temperature1.text(response.list[8].main.temp);
-                $humidity1.text(response.list[8].main.humidity);
+                $temperature1.text("Temp: " + response.list[8].main.temp + "F");
+                $humidity1.text("Humidity: " + response.list[8].main.humidity + "%");
                 $date2.text(response.list[16].dt_txt);
-                $temperature2.text(response.list[16].main.temp);
-                $humidity2.text(response.list[16].main.humidity);
+                $temperature2.text("Temp: " + response.list[16].main.temp + "F");
+                $humidity2.text("Humidity: " + response.list[16].main.humidity + "%");
                 $date3.text(response.list[24].dt_txt);
-                $temperature3.text(response.list[24].main.temp);
-                $humidity3.text(response.list[24].main.humidity);
+                $temperature3.text("Temp: " + response.list[24].main.temp + "F");
+                $humidity3.text("Humidity: " + response.list[24].main.humidity + "%");
                 $date4.text(response.list[32].dt_txt);
-                $temperature4.text(response.list[32].main.temp);
-                $humidity4.text(response.list[32].main.humidity);
-                $date5.text(response.list[40].dt_txt);
-                $temperature5.text(response.list[40].main.temp);
-                $humidity5.text(response.list[40].main.humidity);
+                $temperature4.text("Temp: " + response.list[32].main.temp + "F");
+                $humidity4.text("Humidity: " + response.list[32].main.humidity + "%");
+                $date5.text(response.list[39].dt_txt);
+                $temperature5.text("Temp: " + response.list[39].main.temp + "F");
+                $humidity5.text("Humidity: " + response.list[39].main.humidity + "%");
             });
         } else {
             $("#error").html("Field cannot be empty");
