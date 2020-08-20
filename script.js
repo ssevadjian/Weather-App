@@ -34,7 +34,7 @@ $(document).ready(function() {
         localStorage.setItem("cityName", JSON.stringify(cityName));
         if (cityName != ''){
             $.ajax({
-                url: "http://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid=aba0dc3fe422be621a8162117dd5640b", 
+                url: "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid=aba0dc3fe422be621a8162117dd5640b", 
                 method: "GET",
             }).then(function(response) {
                 console.log(response);
